@@ -1,0 +1,74 @@
+@import '../variables';
+
+.sort {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 36px;
+
+
+  &__label {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+      transform: rotate(180deg);
+      transition: all 0.5s ease;
+
+      &.rotate {
+        transform: rotate(0deg);
+      }
+    }
+
+    b {
+      margin-right: 8px;
+    }
+
+    span {
+      color: $violet;
+      cursor: pointer;
+      width: 107px;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    width: 160px;
+    right: -40px;
+    margin-top: 15px;
+    background: #ffffff;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    opacity: 0;
+    transform: translateY(-30%);
+    visibility: hidden;
+    transition: all 0.5s ease;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0%);
+      visibility: visible;
+    }
+
+    ul {
+      overflow: hidden;
+
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+          background: rgba(254, 95, 30, 0.05);
+        }
+
+        &.active {
+          font-weight: bold;
+          color: $violet;
+        }
+      }
+    }
+  }
+}

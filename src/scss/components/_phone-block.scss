@@ -1,0 +1,99 @@
+@import '../variables';
+
+.phone-block {
+  width: 270px;
+  text-align: center;
+  margin: 0 auto 35px;
+  border: 1px solid $grey;
+  padding: 20px 10px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.5s ease;
+
+  &:hover {
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  &__image {
+    height: 260px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1%;
+    margin-bottom: 20px;
+    margin-top: 7px;
+  }
+
+  &__selector {
+    display: flex;
+    background-color: #dad8f7;
+    border-radius: 4px;
+    flex-direction: column;
+    padding: 6px;
+
+    span {
+      margin-bottom: 7px;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+
+    ul {
+      display: flex;
+      flex: 1;
+
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        @include noselect();
+
+        &.active {
+          background: #ffffff;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.07);
+          border-radius: 5px;
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button--add {
+    padding: 10px 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
