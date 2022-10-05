@@ -20,10 +20,17 @@
 
   &__logo {
     display: flex;
+    align-items: center;
 
     img {
       margin-right: 15px;
       margin-top: 2px;
+      width: 52px;
+
+      @media(max-width: 360px) {
+        width: 52px;
+        height: 52px;
+      }
     }
 
     h1 {

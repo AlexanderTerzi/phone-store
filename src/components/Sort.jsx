@@ -1,10 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const sortList = ['алфавиту', 'цене', 'популярности'];
+const sortList = [
+    { name: 'популярности (убыв)', sortProperty: '-rating' },
+    { name: 'популярности (возр)', sortProperty: 'rating' },
+    { name: 'цене (убыв)', sortProperty: '-initialPrice' },
+    { name: 'цене (возр)', sortProperty: 'initialPrice' },
+    { name: 'алфавиту (убыв)', sortProperty: '-title' },
+    { name: 'алфавиту (возр)', sortProperty: 'title' }
+];
 
-const Sort = () => {
+const Sort = ({ activeSort, setActiveSort }) => {
     const [openSort, setOpenSort] = useState(false);
-    const [activeSort, setActiveSort] = useState(0);
     const sortRef = useRef();
 
     const handleOpenSort = () => {
@@ -26,7 +32,7 @@ const Sort = () => {
         setOpenSort(false);
     }
 
-    const currentSort = sortList[activeSort];
+    const currentSort = activeSort.name;
 
     return (
         <div className="sort" ref={sortRef}>
@@ -54,9 +60,9 @@ const Sort = () => {
                     {sortList && sortList.map((item, index) => (
                         <li
                             key={`${index}_${item}`}
-                            className={activeSort === index ? 'active' : ''}
-                            onClick={() => handleClickSort(index)}>
-                            {item}
+                            className={activeSort.sortProperty === item.sortProperty ? 'active' : ''}
+                            onClick={() => handleClickSort(item)}>
+                            {item.name}
                         </li>
                     ))}
                 </ul>

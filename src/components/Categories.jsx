@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const categories = ['Все', 'Apple', 'Samsung', 'Huawei', 'Motorola', 'Xiaomi']
+const categories = ['Все', 'Apple', 'Samsung', 'Huawei', 'Motorola', 'Xiaomi'];
 
-const Categories = () => {
-    const [activeCategory, setActiveCategory] = useState(0);
-
-    const handleClickCategory = (index) => {
-        setActiveCategory(index);
-    }
-
+const Categories = ({ activeCategory, setActiveCategory }) => {
     return (
         <div className="categories">
             <ul>
@@ -16,7 +10,7 @@ const Categories = () => {
                     <li
                         key={`${index}_${item}`}
                         className={activeCategory === index ? 'active' : ''}
-                        onClick={() => handleClickCategory(index)}>
+                        onClick={() => setActiveCategory(index)}>
                         {item}
                     </li>
                 ))}
