@@ -3,6 +3,7 @@ import React from 'react';
 import logo from '../assets/img/logo.png'
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import Languages from './Languages';
 
 const Header = () => {
     return (
@@ -15,7 +16,7 @@ const Header = () => {
                         <p>Smartphones and Mobile Phones</p>
                     </div>
                 </Link>
-
+                <Languages />
                 <div className="header__cart">
                     <Link to="/cart" className="button button--cart">
                         <span>520 ₴</span>

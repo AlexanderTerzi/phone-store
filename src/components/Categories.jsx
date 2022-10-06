@@ -1,12 +1,16 @@
 import React from 'react';
 
-const categories = ['Все', 'Apple', 'Samsung', 'Huawei', 'Motorola', 'Xiaomi'];
+import { useTranslation } from 'react-i18next';
 
 const Categories = ({ activeCategory, setActiveCategory }) => {
+    const { t } = useTranslation();
+
+    const categories = t("categories", { returnObjects: true });
+
     return (
         <div className="categories">
             <ul>
-                {categories && categories.map((item, index) => (
+                {categories.map((item, index) => (
                     <li
                         key={`${index}_${item}`}
                         className={activeCategory === index ? 'active' : ''}

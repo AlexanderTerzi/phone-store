@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import cookies from 'js-cookie';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -9,11 +11,13 @@ import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
+    const { t } = useTranslation();
+    const sortTitle = t("sortList", { returnObjects: true })[0].name;
     const [products, setProducts] = useState([]);
     const [productsCount, setProductsCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState(0);
-    const [activeSort, setActiveSort] = useState({ name: 'популярности (убыв)', sortProperty: '-rating' });
+    const [activeSort, setActiveSort] = useState({ name: sortTitle, sortProperty: '-rating' });
     const [searchValue, setSearchValue] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,13 +43,20 @@ const Home = () => {
     const skeletons = [...new Array(8)].map((_, index) => <Loader key={index} />)
     const goods = products.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
 
+    const currentLanguageCode = cookies.get('i18next');
+
+    useEffect(() => {
+        const sortTitle = t("sortList", { returnObjects: true })[0].name;
+        setActiveSort({ name: sortTitle, sortProperty: '-rating' })
+    }, [currentLanguageCode])
+
     return (
         <div className="container">
             <div className="content__top">
                 <Categories activeCategory={activeCategory} setActiveCategory={(index) => setActiveCategory(index)} />
                 <Search searchValue={searchValue} setSearchValue={setSearchValue} />
             </div>
-            <h2 className="content__title">Все смартфоны</h2>
+            <h2 className="content__title">{t('title')}</h2>
             <Sort activeSort={activeSort} setActiveSort={(index) => setActiveSort(index)} />
             <div className="content__items">
                 {loading ? skeletons : goods}

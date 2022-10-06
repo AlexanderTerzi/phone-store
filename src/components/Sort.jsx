@@ -1,15 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-
-const sortList = [
-    { name: 'популярности (убыв)', sortProperty: '-rating' },
-    { name: 'популярности (возр)', sortProperty: 'rating' },
-    { name: 'цене (убыв)', sortProperty: '-initialPrice' },
-    { name: 'цене (возр)', sortProperty: 'initialPrice' },
-    { name: 'алфавиту (убыв)', sortProperty: '-title' },
-    { name: 'алфавиту (возр)', sortProperty: 'title' }
-];
+import { useTranslation } from 'react-i18next';
 
 const Sort = ({ activeSort, setActiveSort }) => {
+    const { t } = useTranslation();
     const [openSort, setOpenSort] = useState(false);
     const sortRef = useRef();
 
@@ -32,6 +25,7 @@ const Sort = ({ activeSort, setActiveSort }) => {
         setOpenSort(false);
     }
 
+    const sortList = t("sortList", { returnObjects: true });
     const currentSort = activeSort.name;
 
     return (
@@ -50,7 +44,7 @@ const Sort = ({ activeSort, setActiveSort }) => {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <b>Сортировка по:</b>
+                <b>{t("sortBy")}:</b>
                 <span onClick={handleOpenSort}>
                     {currentSort}
                 </span>

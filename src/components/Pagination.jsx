@@ -9,7 +9,7 @@ const Pagination = ({ productsCount, itemsPerPage, onChangePage }) => {
             nextLabel=">"
             previousLabel="<"
             onPageChange={(e) => onChangePage(e.selected + 1)}
-            pageCount={productsCount / itemsPerPage}
+            pageCount={Math.ceil(productsCount / itemsPerPage)}
             renderOnZeroPageCount={null}
         />
     );

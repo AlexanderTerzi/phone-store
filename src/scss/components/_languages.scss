@@ -1,0 +1,82 @@
+@import '../variables';
+
+.languages {
+    margin-left: auto;
+    margin-right: 26px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 7px;
+
+        path {
+            stroke: $violet;
+        }
+    }
+
+    &__popup {
+        position: absolute;
+        width: 132px;
+        left: -17px;
+        margin-top: 43px;
+        background: #ffffff;
+        font-weight: 400;
+        box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        color: #232323;
+        overflow: hidden;
+        padding: 10px 0;
+        opacity: 0;
+        transform: translateY(-30%);
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 778;
+        text-transform: none;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0%);
+            visibility: visible;
+        }
+    }
+
+    &__value {
+        color: $violet;
+        border-bottom: 1px dashed $violet;
+    }
+
+    li {
+        padding: 12px 20px;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+            background: rgba(254, 95, 30, 0.05);
+        }
+
+        &.active {
+            font-weight: bold;
+            color: $violet;
+        }
+    }
+
+    &__arrow {
+        margin-left: 8px;
+        transform: rotate(-180deg);
+        transition: all 0.3s ease;
+        margin-top: 7px;
+
+        &.rotate {
+            &.rotate {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

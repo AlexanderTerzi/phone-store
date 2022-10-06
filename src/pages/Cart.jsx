@@ -1,15 +1,20 @@
 import React from 'react';
-import { BsCart4 } from "react-icons/bs";
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import { BsCart4 } from "react-icons/bs";
+
 const Cart = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="container container--cart">
             <div className="cart">
                 <div className="cart__top">
                     <h2 className="content__title">
                         <BsCart4 />
-                        Корзина</h2>
+                        {t('cartTitle')}
+                    </h2>
                     <div className="cart__clear">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.5 5H4.16667H17.5" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -18,7 +23,9 @@ const Cart = () => {
                             <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
 
-                        <span>Очистить корзину</span>
+                        <span>
+                            {t('cartClear')}
+                        </span>
                     </div>
                 </div>
                 <div className="content__items">
@@ -109,18 +116,22 @@ const Cart = () => {
                 </div>
                 <div className="cart__bottom">
                     <div className="cart__bottom-details">
-                        <span> Всего товаров: <b>3 шт.</b> </span>
-                        <span> Сумма заказа: <b>900 ₴</b> </span>
+                        <span>
+                            {t('totalProductsCount')}: <b>3 шт.</b>
+                        </span>
+                        <span>
+                            {t('totalProductsPrice')}: <b>900 ₴</b>
+                        </span>
                     </div>
                     <div className="cart__bottom-buttons">
                         <Link to="/" className="button button--outline button--add go-back-btn">
                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
-                            <span>Вернуться назад</span>
+                            <span>{t('backButton')}</span>
                         </Link>
                         <div className="button pay-btn">
-                            <span>Оплатить сейчас</span>
+                            <span>{t('payNow')}</span>
                         </div>
                     </div>
                 </div>

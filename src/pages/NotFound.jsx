@@ -1,19 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="not-found">
             <h1>
                 <span>😕</span>
                 <br />
-                Ничего не найдено
+                {t('page404Title')}
             </h1>
             <p className="not-found__text">
-                К сожалению данная страница отсутствует в нашем интернет-магазине
+                {t('page404Text')}
             </p>
             <Link to="/" className="button button--not-found">
-                Назад
+                {t('back404')}
             </Link>
         </div>
     );

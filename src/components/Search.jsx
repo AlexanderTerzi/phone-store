@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Search = ({ searchValue, setSearchValue }) => {
+    const { t } = useTranslation();
 
     return (
         <div className="search">
@@ -42,7 +44,7 @@ const Search = ({ searchValue, setSearchValue }) => {
                 onChange={(e) => setSearchValue(e.target.value)}
                 className="search__input"
                 type="text"
-                placeholder="Поиск..."
+                placeholder={t("search")}
             />
             {searchValue && (
                 <svg
