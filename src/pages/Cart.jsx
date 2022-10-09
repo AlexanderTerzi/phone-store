@@ -1,11 +1,13 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+
+import { useSelector } from "react-redux";
+import { selectTranslations } from '../redux/slices/i18nextSlice';
 
 import { BsCart4 } from "react-icons/bs";
 
 const Cart = () => {
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
 
     return (
         <div className="container container--cart">
@@ -13,7 +15,7 @@ const Cart = () => {
                 <div className="cart__top">
                     <h2 className="content__title">
                         <BsCart4 />
-                        {t('cartTitle')}
+                        {t.cartTitle}
                     </h2>
                     <div className="cart__clear">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +26,7 @@ const Cart = () => {
                         </svg>
 
                         <span>
-                            {t('cartClear')}
+                            {t.cartClear}
                         </span>
                     </div>
                 </div>
@@ -117,10 +119,10 @@ const Cart = () => {
                 <div className="cart__bottom">
                     <div className="cart__bottom-details">
                         <span>
-                            {t('totalProductsCount')}: <b>3 шт.</b>
+                            {t.totalProductsCount}: <b>3 шт.</b>
                         </span>
                         <span>
-                            {t('totalProductsPrice')}: <b>900 ₴</b>
+                            {t.totalProductsPrice}: <b>900 ₴</b>
                         </span>
                     </div>
                     <div className="cart__bottom-buttons">
@@ -128,10 +130,10 @@ const Cart = () => {
                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
-                            <span>{t('backButton')}</span>
+                            <span>{t.backButton}</span>
                         </Link>
                         <div className="button pay-btn">
-                            <span>{t('payNow')}</span>
+                            <span>{t.payNow}</span>
                         </div>
                     </div>
                 </div>

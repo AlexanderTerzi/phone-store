@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+
+import { useSelector } from "react-redux";
+import { selectTranslations } from '../redux/slices/i18nextSlice';
 
 const Sort = ({ activeSort, setActiveSort }) => {
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
+
     const [openSort, setOpenSort] = useState(false);
     const sortRef = useRef();
 
@@ -25,7 +28,7 @@ const Sort = ({ activeSort, setActiveSort }) => {
         setOpenSort(false);
     }
 
-    const sortList = t("sortList", { returnObjects: true });
+    const sortList = t.sortList;
     const currentSort = activeSort.name;
 
     return (
@@ -44,7 +47,7 @@ const Sort = ({ activeSort, setActiveSort }) => {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <b>{t("sortBy")}:</b>
+                <b>{t.sortBy}:</b>
                 <span onClick={handleOpenSort}>
                     {currentSort}
                 </span>

@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import cookies from 'js-cookie';
-import i18next from 'i18next';
-import { useTranslation } from 'react-i18next';
-
 import { GrLanguage } from "react-icons/gr";
-import { IconContext } from "react-icons";
+
+import { useSelector, useDispatch } from "react-redux";
+import { selectTranslations } from '../redux/slices/i18nextSlice';
+import { setLang } from '../redux/slices/i18nextSlice';
 
 const Languages = () => {
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
+    const dispatch = useDispatch();
     const [openLanguage, setOpenLanguage] = useState(false);
     const languageRef = useRef();
 
@@ -26,25 +26,9 @@ const Languages = () => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
-    const languages = [
-        {
-            code: 'en',
-            country_code: 'gb',
-            name: 'English'
-        },
-        {
-            code: 'ua',
-            country_code: 'ua',
-            name: 'Українська'
-        },
-        {
-            code: 'ru',
-            country_code: 'ru',
-            name: 'Русский',
-        },
-    ];
+    const supportedLangs = useSelector((state) => state.i18n.supportedLangs);
 
-    const currentLanguageCode = cookies.get('i18next') || 'ua';
+    const currentLang = useSelector((state) => state.i18n.lang);
 
     return (
         <div
@@ -55,14 +39,15 @@ const Languages = () => {
         >
             <GrLanguage className="languages__icon" />
             <span className="languages__value">
-                {currentLanguageCode}
+                {currentLang}
             </span>
             <ul className={openLanguage ? `languages__popup active` : "languages__popup"}>
-                {languages.map(({ code, name, country_code }) => (
+
+                {Object.entries(supportedLangs).map(([code, name]) => (
                     <li
                         key={code}
-                        className={currentLanguageCode === code ? 'active' : ''}
-                        onClick={() => i18next.changeLanguage(code)}
+                        className={currentLang === code ? 'active' : ''}
+                        onClick={() => dispatch(setLang(code))}
 
                     >
                         {name}

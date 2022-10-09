@@ -8,6 +8,9 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 
+import { store } from './redux/store';
+import { Provider } from 'react-redux'
+
 //Localisaton
 i18n
   .use(initReactI18next)
@@ -27,8 +30,10 @@ i18n
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 
 );

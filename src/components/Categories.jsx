@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { useTranslation } from 'react-i18next';
+import { useSelector } from "react-redux";
+import { selectTranslations } from '../redux/slices/i18nextSlice';
 
 const Categories = ({ activeCategory, setActiveCategory }) => {
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
 
-    const categories = t("categories", { returnObjects: true });
+    const categories = t.categories;
 
     return (
         <div className="categories">

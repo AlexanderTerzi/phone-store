@@ -1,4 +1,4 @@
-{
+export const ruTranslation = {
     "title": "Все смартфоны",
     "categories": [
         "Все",

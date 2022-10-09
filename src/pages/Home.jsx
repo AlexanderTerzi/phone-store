@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
-import cookies from 'js-cookie';
+
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../redux/slices/i18nextSlice';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -11,8 +12,8 @@ import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 
 const Home = () => {
-    const { t } = useTranslation();
-    const sortTitle = t("sortList", { returnObjects: true })[0].name;
+    const t = useSelector(selectTranslations);
+    const sortTitle = t.sortList[0].name;
     const [products, setProducts] = useState([]);
     const [productsCount, setProductsCount] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const itemsPerPage = 8;
+    const currentLanguageCode = useSelector(state => state.i18n.lang);
 
     useEffect(() => {
         setLoading(true);
@@ -43,12 +45,10 @@ const Home = () => {
     const skeletons = [...new Array(8)].map((_, index) => <Loader key={index} />)
     const goods = products.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
 
-    const currentLanguageCode = cookies.get('i18next');
-
     useEffect(() => {
-        const sortTitle = t("sortList", { returnObjects: true })[0].name;
+        const sortTitle = t.sortList[0].name;
         setActiveSort({ name: sortTitle, sortProperty: '-rating' })
-    }, [currentLanguageCode])
+    }, [currentLanguageCode]);
 
     return (
         <div className="container">
@@ -56,7 +56,7 @@ const Home = () => {
                 <Categories activeCategory={activeCategory} setActiveCategory={(index) => setActiveCategory(index)} />
                 <Search searchValue={searchValue} setSearchValue={setSearchValue} />
             </div>
-            <h2 className="content__title">{t('title')}</h2>
+            <h2 className="content__title">{t.title}</h2>
             <Sort activeSort={activeSort} setActiveSort={(index) => setActiveSort(index)} />
             <div className="content__items">
                 {loading ? skeletons : goods}

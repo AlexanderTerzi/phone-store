@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+
+import { useSelector } from "react-redux";
+import { selectTranslations } from '../../redux/slices/i18nextSlice';
 
 import { BsCart4 } from "react-icons/bs";
 
 const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
 
     const handleClickColor = (item) => {
         setActiveColor(colors.indexOf(item));
@@ -24,7 +26,7 @@ const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
             <h4 className="phone-block__title">{title}</h4>
             <div className="phone-block__selector">
                 <span>
-                    {t('color')}:
+                    {t.color}:
                 </span>
                 <ul>
                     {colors && colors.map((item, index) => (
@@ -38,7 +40,7 @@ const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
                     ))}
                 </ul>
                 <span>
-                    {t('memory')}:
+                    {t.memory}:
                 </span>
                 <ul>
                     {memory && memory.map((item, index) => (
@@ -54,12 +56,12 @@ const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
             </div>
             <div className="phone-block__bottom">
                 <div className="phone-block__price">
-                    <span>{t('priceTitle')}:</span>
+                    <span>{t.priceTitle}:</span>
                     {currentPrice} ₴
                 </div>
                 <div className="button button--outline button--add">
                     <BsCart4 />
-                    <span>{t('addButton')}</span>
+                    <span>{t.addButton}</span>
                     <i>0</i>
                 </div>
             </div>

@@ -1,8 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+
+import { useSelector } from "react-redux";
+import { selectTranslations } from '../redux/slices/i18nextSlice';
 
 const Search = ({ searchValue, setSearchValue }) => {
-    const { t } = useTranslation();
+    const t = useSelector(selectTranslations);
 
     return (
         <div className="search">
@@ -44,7 +46,7 @@ const Search = ({ searchValue, setSearchValue }) => {
                 onChange={(e) => setSearchValue(e.target.value)}
                 className="search__input"
                 type="text"
-                placeholder={t("search")}
+                placeholder={t.search}
             />
             {searchValue && (
                 <svg

@@ -1,4 +1,4 @@
-{
+export const uaTranslation = {
     "title": "Усі смартфони",
     "categories": [
         "Усі",
