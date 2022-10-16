@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveSort } from '../redux/slices/filterSlice';
 import { selectTranslations } from '../redux/slices/i18nextSlice';
 
-const Sort = ({ activeSort, setActiveSort }) => {
+const Sort = () => {
+    const dispatch = useDispatch();
     const t = useSelector(selectTranslations);
+    const activeSort = useSelector(state => state.filter.activeSort);
+    const currentLanguageCode = useSelector(state => state.i18n.lang);
 
     const [openSort, setOpenSort] = useState(false);
     const sortRef = useRef();
@@ -23,13 +27,17 @@ const Sort = ({ activeSort, setActiveSort }) => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
+    useEffect(() => {
+        const sortTitle = t.sortList[0].name;
+        dispatch(setActiveSort({ name: sortTitle, sortProperty: '-rating' }))
+    }, [currentLanguageCode]);
+
     const handleClickSort = (index) => {
-        setActiveSort(index);
+        dispatch(setActiveSort(index));
         setOpenSort(false);
     }
 
     const sortList = t.sortList;
-    const currentSort = activeSort.name;
 
     return (
         <div className="sort" ref={sortRef}>
@@ -49,7 +57,7 @@ const Sort = ({ activeSort, setActiveSort }) => {
                 </svg>
                 <b>{t.sortBy}:</b>
                 <span onClick={handleOpenSort}>
-                    {currentSort}
+                    {activeSort.name}
                 </span>
             </div>
             <div className={openSort ? `sort__popup active` : "sort__popup"}>

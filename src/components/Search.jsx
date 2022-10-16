@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { useSelector } from "react-redux";
 import { selectTranslations } from '../redux/slices/i18nextSlice';
 
-const Search = ({ searchValue, setSearchValue }) => {
+import debounce from 'lodash.debounce';
+
+const Search = ({ setSearchValue }) => {
     const t = useSelector(selectTranslations);
+    const inputRef = useRef();
+    const [value, setValue] = useState('');
+
+    const handleClickClear = () => {
+        setSearchValue('');
+        setValue('');
+        inputRef.current.focus();
+    };
+
+    const updateSearchValue = useCallback(
+        debounce((str) => {
+            setSearchValue(str);
+        }, 700),
+        []
+    );
+
+    const handleChangeInput = e => {
+        setValue(e.target.value);
+        updateSearchValue(e.target.value);
+    };
 
     return (
         <div className="search">
@@ -42,15 +64,16 @@ const Search = ({ searchValue, setSearchValue }) => {
                 />
             </svg>
             <input
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                value={value}
+                onChange={handleChangeInput}
+                ref={inputRef}
                 className="search__input"
                 type="text"
                 placeholder={t.search}
             />
-            {searchValue && (
+            {value && (
                 <svg
-                    onClick={() => setSearchValue('')}
+                    onClick={handleClickClear}
                     className="search__clear"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">

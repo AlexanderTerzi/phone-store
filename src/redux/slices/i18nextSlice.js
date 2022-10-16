@@ -9,9 +9,9 @@ const initialState = {
     lang: defaultLang,
     supportedLangs: { ...supportedLangs },
     translations: {
+        ua: uaTranslation,
         en: enTranslation,
         ru: ruTranslation,
-        ua: uaTranslation,
     },
 };
 
@@ -19,7 +19,7 @@ export const i18nSlice = createSlice({
     name: "i18n",
     initialState,
     reducers: {
-        setLang: (state, action) => {
+        setLang(state, action) {
             state.lang = action.payload;
         },
     },
