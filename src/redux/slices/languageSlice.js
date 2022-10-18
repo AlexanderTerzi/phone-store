@@ -15,8 +15,8 @@ const initialState = {
     },
 };
 
-export const i18nSlice = createSlice({
-    name: "i18n",
+export const languageSlice = createSlice({
+    name: "language",
     initialState,
     reducers: {
         setLang(state, action) {
@@ -25,7 +25,7 @@ export const i18nSlice = createSlice({
     },
 });
 
-export const { setLang } = i18nSlice.actions;
+export const { setLang } = languageSlice.actions;
 
-export const selectTranslations = (state) => state.i18n.translations[state.i18n.lang];
-export default i18nSlice.reducer;
+export const selectTranslations = (state) => state.language.translations[state.language.lang];
+export default languageSlice.reducer;

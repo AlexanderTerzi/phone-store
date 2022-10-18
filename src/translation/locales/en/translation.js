@@ -49,5 +49,14 @@ export const enTranslation = {
     "payNow": "Pay now",
     "back404": "Back",
     "page404Title": "Nothing was found",
-    "page404Text": "Unfortunately this page is not available in our online store"
+    "page404Text": "Unfortunately this page is not available in our online store",
+    "deleteItemConfirm": "Are you really want to delete this item?",
+    "clearCartConfirm": "Are you really want to clear your cart?",
+    "errorTitle": "Something went wrong",
+    "errorText": "Try refreshing the page or try again later.",
+    "errorButton": "Refresh the page",
+    "emptyCartTitle": "Your cart is empty",
+    "emptyCartTextOne": "Maybe, you haven't ordered anything yet.",
+    "emptyCartTextTwo": "To make an order go to the main page.",
+    "emptyCartButton": "Go back",
 }

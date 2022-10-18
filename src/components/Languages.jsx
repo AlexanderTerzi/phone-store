@@ -3,8 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { GrLanguage } from "react-icons/gr";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectTranslations } from '../redux/slices/i18nextSlice';
-import { setLang } from '../redux/slices/i18nextSlice';
+import { selectTranslations } from '../redux/slices/languageSlice';
+import { setLang } from '../redux/slices/languageSlice';
 
 const Languages = () => {
     const t = useSelector(selectTranslations);
@@ -26,9 +26,9 @@ const Languages = () => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
-    const supportedLangs = useSelector((state) => state.i18n.supportedLangs);
+    const supportedLangs = useSelector((state) => state.language.supportedLangs);
 
-    const currentLang = useSelector((state) => state.i18n.lang);
+    const currentLang = useSelector((state) => state.language.lang);
 
     return (
         <div

@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 
-import { useSelector } from "react-redux";
-import { selectTranslations } from '../../redux/slices/i18nextSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { selectTranslations } from '../../redux/slices/languageSlice';
+import { addItem } from '../../redux/slices/cartSlice';
 
 import { BsCart4 } from "react-icons/bs";
 
-const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
+const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
+    const t = useSelector(selectTranslations);
+    const dispatch = useDispatch();
+
+    const itemCount = useSelector(state => state.cart.items.filter(obj => obj.id === id));
+
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);
-    const t = useSelector(selectTranslations);
 
     const handleClickColor = (item) => {
         setActiveColor(colors.indexOf(item));
@@ -18,7 +23,22 @@ const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
         setActiveMemory(memory.indexOf(item));
     };
 
+    const handleClickAdd = () => {
+        const item = {
+            id,
+            title,
+            imageUrl,
+            alt,
+            currentPrice,
+            color: colors[activeColor],
+            memory: memory[activeMemory].capacity
+        }
+
+        dispatch(addItem(item));
+    }
+
     const currentPrice = memory[activeMemory].price;
+    const count = itemCount ? itemCount.reduce((sum, obj) => obj.count + sum, 0) : null;
 
     return (
         <div className="phone-block">
@@ -59,10 +79,16 @@ const PhoneBlock = ({ title, imageUrl, alt, colors, memory }) => {
                     <span>{t.priceTitle}:</span>
                     {currentPrice} ₴
                 </div>
-                <div className="button button--outline button--add">
+                <div
+                    onClick={handleClickAdd}
+                    className="button button--outline button--add">
                     <BsCart4 />
-                    <span>{t.addButton}</span>
-                    <i>0</i>
+                    <span>
+                        {t.addButton}
+                    </span>
+                    {
+                        count > 0 && <i>{count}</i>
+                    }
                 </div>
             </div>
         </div>

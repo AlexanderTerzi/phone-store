@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 
 import { useSelector } from "react-redux";
-import { selectTranslations } from '../redux/slices/i18nextSlice';
+import { selectTranslations } from '../redux/slices/languageSlice';
 
 import debounce from 'lodash.debounce';
 

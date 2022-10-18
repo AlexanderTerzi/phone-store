@@ -4,7 +4,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTranslations } from '../redux/slices/i18nextSlice';
+import { selectTranslations } from '../redux/slices/languageSlice';
 import { setActiveCategory, setCurrentPage, setFilterParams } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
@@ -13,6 +13,7 @@ import PhoneBlock from '../components/PhoneBlock';
 import Loader from '../components/Loader';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
+import ErrorBlock from '../components/ErrorBlock';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     const [productsCount, setProductsCount] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     const [searchValue, setSearchValue] = useState('');
 
 
@@ -64,21 +66,30 @@ const Home = () => {
     //Fetch products
     useEffect(() => {
         if (!querySearch.current) {
-            setLoading(true);
+            const fetchProducts = (async () => {
+                setLoading(true);
 
-            const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
-            const sortBy = `sortBy=${activeSort.sortProperty.replace('-', '')}`;
-            const order = `order=${activeSort.sortProperty.includes('-') ? 'desc' : 'asc'}`;
-            const search = searchValue ? `search=${searchValue}` : '';
-            const pagination = `page=${currentPage}&limit=${itemsPerPage}`;
+                const fetchURL = `https://6331ae2c3ea4956cfb64b9b1.mockapi.io/products`;
+                const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
+                const sortBy = `sortBy=${activeSort.sortProperty.replace('-', '')}`;
+                const order = `order=${activeSort.sortProperty.includes('-') ? 'desc' : 'asc'}`;
+                const search = searchValue ? `search=${searchValue}` : '';
+                const pagination = `page=${currentPage}&limit=${itemsPerPage}`;
 
-            axios.get(`https://6331ae2c3ea4956cfb64b9b1.mockapi.io/products?${pagination}&${category}&${sortBy}&${order}&${search}`)
-                .then((res) => {
+                try {
+                    const res = await axios.get(
+                        `${fetchURL}?${pagination}&${category}&${sortBy}&${order}&${search}`
+                    );
+
                     setProducts(res.data.items);
                     setProductsCount(res.data.count)
                     setLoading(false);
-                });
-        }
+                } catch (error) {
+                    setLoading(false);
+                    setError(true);
+                }
+            })();
+        };
 
         querySearch.current = false;
 
@@ -101,16 +112,22 @@ const Home = () => {
                 <Categories activeCategory={activeCategory} setActiveCategory={handleClickCategory} />
                 <Search searchValue={searchValue} setSearchValue={setSearchValue} />
             </div>
-            <h2 className="content__title">{t.title}</h2>
-            <Sort />
-            <div className="content__items">
-                {loading ? skeletons : goods}
-            </div>
-            <Pagination
-                onChangePage={onChangePage}
-                productsCount={productsCount}
-                itemsPerPage={itemsPerPage}
-            />
+            {
+                !error
+                    ? <>
+                        <h2 className="content__title">{t.title}</h2>
+                        <Sort />
+                        <div className="content__items">
+                            {loading ? skeletons : goods}
+                        </div>
+                        <Pagination
+                            onChangePage={onChangePage}
+                            productsCount={productsCount}
+                            itemsPerPage={itemsPerPage}
+                        />
+                    </>
+                    : <ErrorBlock />
+            }
         </div >
     );
 };

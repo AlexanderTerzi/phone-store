@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector } from "react-redux";
-import { selectTranslations } from '../redux/slices/i18nextSlice';
+import { selectTranslations } from '../redux/slices/languageSlice';
 
 const Categories = ({ activeCategory, setActiveCategory }) => {
     const t = useSelector(selectTranslations);

@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveSort } from '../redux/slices/filterSlice';
-import { selectTranslations } from '../redux/slices/i18nextSlice';
+import { selectTranslations } from '../redux/slices/languageSlice';
 
 const Sort = () => {
     const dispatch = useDispatch();
     const t = useSelector(selectTranslations);
     const activeSort = useSelector(state => state.filter.activeSort);
-    const currentLanguageCode = useSelector(state => state.i18n.lang);
+    const currentLanguageCode = useSelector(state => state.language.lang);
 
     const [openSort, setOpenSort] = useState(false);
     const sortRef = useRef();
@@ -25,6 +25,8 @@ const Sort = () => {
 
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick);
+
+        return () => document.body.removeEventListener('click', handleOutsideClick);
     }, []);
 
     useEffect(() => {
