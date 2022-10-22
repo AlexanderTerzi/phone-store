@@ -1,24 +1,26 @@
 import React, { useCallback, useRef, useState } from 'react';
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectTranslations } from '../redux/slices/languageSlice';
+import { setSearchValue } from '../redux/slices/filterSlice';
 
 import debounce from 'lodash.debounce';
 
-const Search = ({ setSearchValue }) => {
+const Search = () => {
     const t = useSelector(selectTranslations);
+    const dispatch = useDispatch();
     const inputRef = useRef();
     const [value, setValue] = useState('');
 
     const handleClickClear = () => {
-        setSearchValue('');
+        dispatch(setSearchValue(''));
         setValue('');
         inputRef.current.focus();
     };
 
     const updateSearchValue = useCallback(
         debounce((str) => {
-            setSearchValue(str);
+            dispatch(setSearchValue(str));
         }, 700),
         []
     );

@@ -547,3 +547,141 @@ body {
     }
   }
 }
+
+.single-block {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+
+  &__title {
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}
+
+.single-item {
+  display: flex;
+  justify-content: space-between;
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    max-width: 400px;
+
+    @media(max-width: 1000px) {
+      max-width: 300px;
+    }
+
+    @media(max-width: 400px) {
+      max-width: 90%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    max-width: 400px;
+    min-height: 100%;
+    position: relative;
+  }
+
+  &__text {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 500;
+
+    @media(max-width: 1000px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__selector {
+    display: flex;
+    background-color: #dad8f7;
+    border-radius: 4px;
+    flex-direction: column;
+    padding: 6px;
+    position: relative;
+
+    span {
+      margin-bottom: 7px;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    ul {
+      display: flex;
+      flex: 1;
+
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        background: #e6e4ff;
+        margin: 0 3px;
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        border: 1px solid #c4c4c4;
+        box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.05);
+        border-radius: 7px;
+        transition: all 0.3s ease;
+        @include noselect();
+
+        &.active {
+          background: #ffffff;
+          box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 20px;
+    align-items: flex-end;
+    flex: 1 0 auto;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+
+    @media(max-width: 1000px) {
+      position: static;
+    }
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button--add {
+    padding: 10px 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+
+    span {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTranslations } from '../redux/slices/languageSlice';
+import { fetchItems } from '../redux/slices/productsSlice';
 import { setActiveCategory, setCurrentPage, setFilterParams } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
@@ -18,18 +18,13 @@ import ErrorBlock from '../components/ErrorBlock';
 const Home = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const t = useSelector(selectTranslations);
     const querySearch = useRef(false);
     const pageMounted = useRef(false);
 
-    const { activeCategory, activeSort, currentPage, itemsPerPage } = useSelector(state => state.filter);
-
-    const [products, setProducts] = useState([]);
-    const [productsCount, setProductsCount] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [searchValue, setSearchValue] = useState('');
-
+    const { activeCategory, activeSort, currentPage, itemsPerPage, searchValue } = useSelector(state => state.filter);
+    const { items, itemsCount, status } = useSelector(state => state.products);
 
     // If there was a first render, and parameters have been changed
     useEffect(() => {
@@ -49,10 +44,10 @@ const Home = () => {
 
     // /If there was a first render, chech URL-parameters and save in Redux
     useEffect(() => {
-        if (window.location.search) {
-            const filterParams = qs.parse(window.location.search.substring(1));
+        if (location.search) {
+            const filterParams = qs.parse(location.search.substring(1));
 
-            const activeSort = t.sortList.find(obj => obj.sortProperty === filterParams.sortProperty)
+            const activeSort = t.sortList.find(obj => obj.sortProperty === filterParams.sortProperty);
 
             dispatch(setFilterParams({
                 ...filterParams,
@@ -67,7 +62,6 @@ const Home = () => {
     useEffect(() => {
         if (!querySearch.current) {
             const fetchProducts = (async () => {
-                setLoading(true);
 
                 const fetchURL = `https://6331ae2c3ea4956cfb64b9b1.mockapi.io/products`;
                 const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
@@ -76,18 +70,14 @@ const Home = () => {
                 const search = searchValue ? `search=${searchValue}` : '';
                 const pagination = `page=${currentPage}&limit=${itemsPerPage}`;
 
-                try {
-                    const res = await axios.get(
-                        `${fetchURL}?${pagination}&${category}&${sortBy}&${order}&${search}`
-                    );
-
-                    setProducts(res.data.items);
-                    setProductsCount(res.data.count)
-                    setLoading(false);
-                } catch (error) {
-                    setLoading(false);
-                    setError(true);
-                }
+                dispatch(fetchItems({
+                    fetchURL,
+                    category,
+                    sortBy,
+                    order,
+                    search,
+                    pagination
+                }));
             })();
         };
 
@@ -104,29 +94,30 @@ const Home = () => {
     };
 
     const skeletons = [...new Array(8)].map((_, index) => <Loader key={index} />)
-    const goods = products.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
+    const goods = items.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
 
     return (
         <div className="container">
             <div className="content__top">
                 <Categories activeCategory={activeCategory} setActiveCategory={handleClickCategory} />
-                <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+                <Search searchValue={searchValue} />
             </div>
             {
-                !error
-                    ? <>
+                status === 'error'
+                    ? <ErrorBlock />
+                    : <>
                         <h2 className="content__title">{t.title}</h2>
                         <Sort />
                         <div className="content__items">
-                            {loading ? skeletons : goods}
+                            {status === 'loading' ? skeletons : goods}
                         </div>
                         <Pagination
                             onChangePage={onChangePage}
-                            productsCount={productsCount}
+                            productsCount={itemsCount}
                             itemsPerPage={itemsPerPage}
+                            currentPage={currentPage}
                         />
                     </>
-                    : <ErrorBlock />
             }
         </div >
     );

@@ -3,11 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartSlice from './slices/cartSlice';
 import filterSlice from './slices/filterSlice';
 import languageReducer from './slices/languageSlice';
+import productsSlice from './slices/productsSlice';
 
 export const store = configureStore({
     reducer: {
         language: languageReducer,
         filter: filterSlice,
-        cart: cartSlice
+        cart: cartSlice,
+        products: productsSlice
     },
 })

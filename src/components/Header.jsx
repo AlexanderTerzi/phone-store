@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
+import { getCartSelector } from '../redux/slices/cartSlice';
 
 import logo from '../assets/img/logo.png'
 import { BsCart4 } from "react-icons/bs";
-import { Link } from 'react-router-dom';
 import Languages from './Languages';
 
 const Header = () => {
-    const { totalPrice, totalCount } = useSelector(state => state.cart);
+    const { totalPrice, totalCount } = useSelector(getCartSelector);
 
     return (
         <div className="header">

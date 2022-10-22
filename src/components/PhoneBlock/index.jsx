@@ -5,6 +5,7 @@ import { selectTranslations } from '../../redux/slices/languageSlice';
 import { addItem } from '../../redux/slices/cartSlice';
 
 import { BsCart4 } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
     const t = useSelector(selectTranslations);
@@ -42,8 +43,10 @@ const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
 
     return (
         <div className="phone-block">
-            <img className="phone-block__image" src={imageUrl} alt={alt} />
-            <h4 className="phone-block__title">{title}</h4>
+            <Link to={`products/${id}`}>
+                <img className="phone-block__image" src={imageUrl} alt={alt} />
+                <h4 className="phone-block__title">{title}</h4>
+            </Link>
             <div className="phone-block__selector">
                 <span>
                     {t.color}:
