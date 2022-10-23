@@ -106,7 +106,11 @@ const Home = () => {
                 status === 'error'
                     ? <ErrorBlock />
                     : <>
-                        <h2 className="content__title">{t.title}</h2>
+                        <h2 className="content__title">
+                            {
+                                searchValue ? `${t.searchTitle}: ${searchValue}...` : `${t.title}`
+                            }
+                        </h2>
                         <Sort />
                         <div className="content__items">
                             {status === 'loading' ? skeletons : goods}

@@ -69,7 +69,9 @@ const SingleProduct = () => {
             <div className="single-item">
                 <img className="single-item__image" src={`.${singleItem.imageUrl}`} alt={singleItem.alt} />
                 <div className="single-item__description">
-                    <p className="single-item__text">Екран (6.4", Super AMOLED, 2400x1080) / MediaTek Helio G80 (2.0 ГГц + 1.8 ГГц) / основна квадрокамера: 64 Мп + 8 Мп + 2 Мп + 2 Мп, фронтальна камера: 20 Мп / RAM 6 ГБ / 128 ГБ вбудованої пам'яті + microSD (до 1 ТБ) / 3G / LTE / GPS / підтримка 2 SIM-карток (Nano-SIM) / Android 11 / 5000 мА·год</p>
+                    <p className="single-item__text">
+                        {singleItem.description}
+                    </p>
                     <div className="single-item__selector">
                         <span>
                             {t.color}:

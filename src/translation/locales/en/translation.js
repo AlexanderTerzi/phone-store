@@ -59,4 +59,6 @@ export const enTranslation = {
     "emptyCartTextOne": "Maybe, you haven't ordered anything yet.",
     "emptyCartTextTwo": "To make an order go to the main page.",
     "emptyCartButton": "Go back",
+    "pieces": "pcs.",
+    "searchTitle": "Search by request"
 }

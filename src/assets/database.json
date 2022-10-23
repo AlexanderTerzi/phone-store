@@ -5,26 +5,24 @@
         "title": "Apple iPhone 14",
         "alt": "Apple iPhone 14",
         "colors": [
-            "black",
-            "white"
+            "midnight",
+            "red",
+            "gold"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 41499
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 46499
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 41499,
         "category": 1,
-        "rating": 4
+        "rating": 4,
+        "description": "6.1 inch, OLED (Super Retina XDR), 2532x1170 / Apple A15 Bionic / camera: 12 Mp + 12 Mp, front camera: 12 Mp / 3G / LTE / 5G / GPS / Nano-SIM / iOS 16"
     },
     {
         "id": "1",
@@ -32,22 +30,27 @@
         "title": "Apple iPhone 13 Pro",
         "alt": "Apple iPhone 13 Pro",
         "colors": [
-            "black",
-            "white"
+            "graphite",
+            "gold"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
+                "capacity": 128,
+                "price": 44999
             },
             {
-                "capacity": 128,
-                "price": 15000
+                "capacity": 256,
+                "price": 48999
+            },
+            {
+                "capacity": 512,
+                "price": 56999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 44999,
         "category": 1,
-        "rating": 3
+        "rating": 3,
+        "description": "6.1 inch, OLED (Super Retina XDR), 2532x1170 / Apple A15 Bionic / camera: 12 Mp + 12 Mp + 12 Mp, front camera: 12 Mp / 3G / LTE / 5G / GPS / Nano-SIM / iOS 15"
     },
     {
         "id": "2",
@@ -55,25 +58,27 @@
         "title": "Apple iPhone 14 Pro",
         "alt": "Apple iPhone 14 Pro",
         "colors": [
-            "black"
+            "gold",
+            "red"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 57499
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 62999
+            },
+            {
+                "capacity": 512,
+                "price": 73499
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 57499,
         "category": 1,
-        "rating": 1
+        "rating": 1,
+        "description": "6.1 inch, OLED (Super Retina XDR), 2556x1179 / Apple A16 Bionic / camera: 48 Mp + 12 Mp + 12 Mp + 12 Mp, front camera: 12 Mp / 3G / LTE / 5G / GPS / Nano-SIM / iOS 16"
     },
     {
         "id": "3",
@@ -82,25 +87,22 @@
         "alt": "Samsung Galaxy S22",
         "colors": [
             "black",
-            "white"
+            "violet"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 15000
-            },
-            {
                 "capacity": 128,
-                "price": 16000
+                "price": 33199
             },
             {
                 "capacity": 256,
-                "price": 17000
+                "price": 35799
             }
         ],
-        "initialPrice": 15000,
+        "initialPrice": 33199,
         "category": 2,
-        "rating": 4
+        "rating": 4,
+        "description": "6.1 inch, Dynamic AMOLED 2X, 2340x1080 / Samsung Exynos 2200 (2.8 Ghz + 2.5 Ghz + 1.8 Ghz) / camera: 50 Mp + 12 Mp + 10 Mp, front camera 10 Mp / RAM 8 Gb / 3G / LTE / 5G / GPS / 2х SIM (Nano-SIM) / Android 12 / 3700 mA*h"
     },
     {
         "id": "4",
@@ -109,25 +111,23 @@
         "alt": "Samsung Galaxy A53",
         "colors": [
             "black",
+            "blue",
             "white"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 17000
-            },
-            {
                 "capacity": 128,
-                "price": 18000
+                "price": 15999
             },
             {
                 "capacity": 256,
-                "price": 19000
+                "price": 17777
             }
         ],
-        "initialPrice": 17000,
+        "initialPrice": 15999,
         "category": 2,
-        "rating": 2
+        "rating": 2,
+        "description": "6.5 inch, Super AMOLED, 2400x1080/ Samsung Exynos 1280 (2 x 2.4 Ghz + 6 x 2.0 Ghz)/ camera: 64 Mp + 12 Mp + 5 Mp + 5 Mp, front camera 32 Mp/ RAM 6 Gb/ 3G/ LTE/ 5G/ GPS/ A-GPS/ BDS/ 2х SIM (Nano-SIM)/ Android 12/ 5000 mA*h"
     },
     {
         "id": "5",
@@ -136,25 +136,23 @@
         "alt": "Samsung Galaxy Fold 4",
         "colors": [
             "black",
-            "white"
+            "green",
+            "beige"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
-                "capacity": 128,
-                "price": 15000
-            },
-            {
                 "capacity": 256,
-                "price": 16000
+                "price": 68999
+            },
+            {
+                "capacity": 512,
+                "price": 73999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 68999,
         "category": 2,
-        "rating": 4
+        "rating": 4,
+        "description": "6.2 inch, Dynamic AMOLED 2X, 2316x904 + 7.6 inch, Dynamic AMOLED 2X, 2176x1812 / Qualcomm Snapdragon 8 Gen 1 / camera: 50 Mp + 12 Mp + 10 Mp, front camera 10 Mp / RAM 12 Gb / 3G / LTE / 5G / GPS / 2х SIM (Nano-SIM) + eSIM / Android 12 / 4400 mA*h"
     },
     {
         "id": "6",
@@ -167,21 +165,18 @@
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 10999
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 12999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 10999,
         "category": 3,
-        "rating": 3
+        "rating": 3,
+        "description": "6.78 inch, IPS, 2388x1080 / Qualcomm Snapdragon 680 (2.4 Ghz + 1.9 Ghz) / camera: 108 Mp + 8 Mp + 2 Mp + 2 Mp, front camera 16 Mp / RAM 8 Gb / 3G / LTE / GPS / 2х SIM (Nano-SIM) / Android 11 / 4000 mA-h"
     },
     {
         "id": "7",
@@ -194,21 +189,18 @@
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 9553
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 10999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 9553,
         "category": 3,
-        "rating": 4
+        "rating": 4,
+        "description": "6.15 inch, LTPS, 2312x1080 / ARM Mali-G51 MP4 (4 x 2.2 Ghz + 4 x 1.7 Ghz) / camera: 48 Mp + 8 Mp + 2 Mp, front camera 24 Mp / RAM 8 Gb / 3G / LTE / GPS / 2х SIM (Nano-SIM) / Android 11 / 3340 mA*h"
     },
     {
         "id": "8",
@@ -216,26 +208,20 @@
         "title": "Motorola G32",
         "alt": "Motorola G32",
         "colors": [
-            "black",
-            "white"
+            "gold",
+            "red",
+            "grey"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
-            },
-            {
-                "capacity": 256,
-                "price": 16000
+                "price": 7699
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 7699,
         "category": 4,
-        "rating": 2
+        "rating": 2,
+        "description": "6.5 inch, LCD, 2400x1080 / Qualcomm Snapdragon 680 (2.4 Ghz) / camera: 50 Mp + 8 Mp + 2 Mp, front camera: 16 Mp / RAM 6 Gb / 3G / LTE / GPS / 2х SIM (Nano-SIM) / Android 12 / 5000 мА*h"
     },
     {
         "id": "9",
@@ -243,26 +229,18 @@
         "title": "Motorola G200 5G",
         "alt": "Motorola G200 5G",
         "colors": [
-            "black",
-            "white"
+            "stellar blue"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
-            },
-            {
-                "capacity": 256,
-                "price": 16000
+                "price": 15999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 15999,
         "category": 4,
-        "rating": 4
+        "rating": 4,
+        "description": "6.8 inch, IPS, 2460x1080 / Qualcomm Snapdragon 888+ (3.0 Ghz) / camera: 108 Mp + 13 Mp + 2 Mp, front camera 16 Mp / RAM 8 Gb / 3G / LTE / 5G / GPS /  2 SIM (Nano-SIM) / Android 11 / 5000 мА·h"
     },
     {
         "id": "10",
@@ -270,26 +248,19 @@
         "title": "Motorola Moto G60",
         "alt": "Motorola Moto G60",
         "colors": [
-            "black",
-            "white"
+            "grey",
+            "blue"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
-            },
-            {
-                "capacity": 256,
-                "price": 16000
+                "price": 9499
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 9499,
         "category": 4,
-        "rating": 4
+        "rating": 4,
+        "description": "6.8 inch, IPS, 2460x1080 / Qualcomm Snapdragon 732G (2 х 2.3 Ghz + 6 х 1.8 Ghz) / camera: 108 Mp + 8 Mp + 2 Mp, front camera: 32 Mp / 3G / LTE / GPS / 2 SIM (Nano-SIM) / Android 11 / 6000 мА·h"
     },
     {
         "id": "11",
@@ -297,22 +268,23 @@
         "title": "Xiaomi Redmi Note 11",
         "alt": "Xiaomi Redmi Note 11",
         "colors": [
-            "black",
-            "white"
+            "grey",
+            "blue"
         ],
         "memory": [
             {
                 "capacity": 64,
-                "price": 14000
+                "price": 7799
             },
             {
                 "capacity": 128,
-                "price": 15000
+                "price": 8999
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 7799,
         "category": 5,
-        "rating": 4
+        "rating": 4,
+        "description": "6.67 inch, AMOLED, 2400x1080 / MediaTek Helio G96 (2.05 Ghz) / camera: 108 Mp + 8 Mp + 2 Mp + 2 Mp, front camera 16 Mp / 3G / LTE / GPS / 2х SIM (Nano-SIM) / Android 11 / 5000 мА*h"
     },
     {
         "id": "12",
@@ -320,26 +292,27 @@
         "title": "Xiaomi Redmi Note 10",
         "alt": "Xiaomi Redmi Note 10",
         "colors": [
-            "black",
-            "white"
+            "grey",
+            "blue"
         ],
         "memory": [
             {
                 "capacity": 64,
-                "price": 14000
+                "price": 7530
             },
             {
                 "capacity": 128,
-                "price": 15000
+                "price": 8499
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 11166
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 7530,
         "category": 5,
-        "rating": 4
+        "rating": 4,
+        "description": "6.67 inch, AMOLED, 2400x1080 / MediaTek Helio G95 (2.05 Ghz) / camera: 64 Mp + 8 Mp + 5 Mp + 2 Mp, front 16 Mp / RAM 6 Gb / 3G / LTE / GPS / 2 SIM (Nano-SIM) / Android 11 (MIUI 12) / 5020 мА·h"
     },
     {
         "id": "13",
@@ -347,26 +320,23 @@
         "title": "Xiaomi Redmi Note 10 Pro",
         "alt": "Xiaomi Redmi Note 10 Pro",
         "colors": [
-            "black",
-            "white"
+            "grey",
+            "gold"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 10999
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 12100
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 10999,
         "category": 5,
-        "rating": 4
+        "rating": 4,
+        "description": "6.67 inch, AMOLED, 2400x1080 / Qualcomm Snapdragon 732G (2.3 Ghz) / camera: 108 Mp + 8 Mp + 5 Mp + 2 Mp, front 16 Mp / RAM 6 Gb / 3G / LTE / GPS / 2 SIM (Nano-SIM) / Android 11 (MIUI 12) / 5020 мА·h"
     },
     {
         "id": "14",
@@ -374,25 +344,26 @@
         "title": "Samsung Galaxy Flip 4",
         "alt": "Samsung Galaxy Flip 4",
         "colors": [
-            "black",
-            "white"
+            "purple",
+            "blue"
         ],
         "memory": [
             {
-                "capacity": 64,
-                "price": 14000
-            },
-            {
                 "capacity": 128,
-                "price": 15000
+                "price": 36999
             },
             {
                 "capacity": 256,
-                "price": 16000
+                "price": 41999
+            },
+            {
+                "capacity": 512,
+                "price": 46955
             }
         ],
-        "initialPrice": 14000,
+        "initialPrice": 36999,
         "category": 2,
-        "rating": 4
+        "rating": 4,
+        "description": "1.9 inch Super AMOLED, 512х260 + 6.7 inch, Dynamic AMOLED 2X, 2640x1080 / Qualcomm Snapdragon 8 Gen 1 / camera: 12 Mp + 12 Mp, front 10 Мп / RAM 8 Gb / 3G / LTE / 5G / GPS / Nano-SIM + eSIM / Android 12 / 3700 мА*h"
     }
 ]

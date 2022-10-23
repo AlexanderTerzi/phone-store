@@ -59,4 +59,6 @@ export const uaTranslation = {
     "emptyCartTextOne": "Найімовірніше, ви ще нічого не замовляли.",
     "emptyCartTextTwo": "Щоб зробити замовлення, перейдіть на головну сторінку.",
     "emptyCartButton": "Повернутися назад",
+    "pieces": "од.",
+    "searchTitle": "Пошук по запиту"
 }

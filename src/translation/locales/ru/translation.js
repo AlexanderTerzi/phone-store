@@ -59,4 +59,6 @@ export const ruTranslation = {
     "emptyCartTextOne": "Вероятней всего, вы ещё ничего не заказывали.",
     "emptyCartTextTwo": "Для того, чтобы сделать заказ, перейдите на главную страницу.",
     "emptyCartButton": "Вернуться назад",
+    "pieces": "шт.",
+    "searchTitle": "Поиск по запросу"
 }
