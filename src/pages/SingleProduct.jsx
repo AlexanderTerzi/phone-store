@@ -8,6 +8,7 @@ import { selectTranslations } from '../redux/slices/languageSlice';
 
 import { BsCart4 } from "react-icons/bs";
 import Loader from '../components/Loader';
+import LoaderSingleProduct from '../components/LoaderSingleProduct';
 
 const SingleProduct = () => {
     const { id } = useParams();
@@ -60,7 +61,7 @@ const SingleProduct = () => {
     const count = itemCount ? itemCount.reduce((sum, obj) => obj.count + sum, 0) : null;
 
     if (!singleItem) {
-        return <Loader />
+        return <LoaderSingleProduct />
     }
 
     return (

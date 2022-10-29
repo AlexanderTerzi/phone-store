@@ -14,6 +14,7 @@ import Loader from '../components/Loader';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 import ErrorBlock from '../components/ErrorBlock';
+import AnimatedPage from './AnimatedPage';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -97,33 +98,35 @@ const Home = () => {
     const goods = items.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
 
     return (
-        <div className="container">
-            <div className="content__top">
-                <Categories activeCategory={activeCategory} setActiveCategory={handleClickCategory} />
-                <Search searchValue={searchValue} />
-            </div>
-            {
-                status === 'error'
-                    ? <ErrorBlock />
-                    : <>
-                        <h2 className="content__title">
-                            {
-                                searchValue ? `${t.searchTitle}: ${searchValue}...` : `${t.title}`
-                            }
-                        </h2>
-                        <Sort />
-                        <div className="content__items">
-                            {status === 'loading' ? skeletons : goods}
-                        </div>
-                        <Pagination
-                            onChangePage={onChangePage}
-                            productsCount={itemsCount}
-                            itemsPerPage={itemsPerPage}
-                            currentPage={currentPage}
-                        />
-                    </>
-            }
-        </div >
+        <AnimatedPage>
+            <div className="container">
+                <div className="content__top">
+                    <Categories activeCategory={activeCategory} setActiveCategory={handleClickCategory} />
+                    <Search searchValue={searchValue} />
+                </div>
+                {
+                    status === 'error'
+                        ? <ErrorBlock />
+                        : <>
+                            <h2 className="content__title">
+                                {
+                                    searchValue ? `${t.searchTitle}: ${searchValue}...` : `${t.title}`
+                                }
+                            </h2>
+                            <Sort />
+                            <div className="content__items">
+                                {status === 'loading' ? skeletons : goods}
+                            </div>
+                            <Pagination
+                                onChangePage={onChangePage}
+                                productsCount={itemsCount}
+                                itemsPerPage={itemsPerPage}
+                                currentPage={currentPage}
+                            />
+                        </>
+                }
+            </div >
+        </AnimatedPage>
     );
 };
 

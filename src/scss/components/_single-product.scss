@@ -20,7 +20,8 @@
     }
 
     &__image {
-        max-width: 400px;
+        max-height: 500px;
+        margin: 0 auto;
 
         @media(max-width: 1000px) {
             max-width: 300px;
@@ -77,6 +78,8 @@
                 background: #e6e4ff;
                 margin: 0 3px;
                 padding: 8px;
+                display: flex;
+                justify-content: center;
                 flex: 1;
                 cursor: pointer;
                 font-weight: 600;
