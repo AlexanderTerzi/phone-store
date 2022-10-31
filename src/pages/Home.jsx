@@ -69,7 +69,7 @@ const Home = () => {
                 const sortBy = `sortBy=${activeSort.sortProperty.replace('-', '')}`;
                 const order = `order=${activeSort.sortProperty.includes('-') ? 'desc' : 'asc'}`;
                 const search = searchValue ? `search=${searchValue}` : '';
-                const pagination = `page=${currentPage}&limit=${itemsPerPage}`;
+                const pagination = activeCategory === 0 ? `page=${1}&limit=${itemsPerPage}` : `page=${currentPage}&limit=${itemsPerPage}`;
 
                 dispatch(fetchItems({
                     fetchURL,
