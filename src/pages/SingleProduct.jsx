@@ -7,7 +7,6 @@ import { addItem } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
 import { BsCart4 } from "react-icons/bs";
-import Loader from '../components/Loader';
 import LoaderSingleProduct from '../components/LoaderSingleProduct';
 
 const SingleProduct = () => {

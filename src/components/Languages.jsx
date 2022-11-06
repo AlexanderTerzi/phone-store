@@ -3,11 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { GrLanguage } from "react-icons/gr";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectTranslations } from '../redux/slices/languageSlice';
 import { setLang } from '../redux/slices/languageSlice';
 
 const Languages = () => {
-    const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
     const [openLanguage, setOpenLanguage] = useState(false);
     const languageRef = useRef();
