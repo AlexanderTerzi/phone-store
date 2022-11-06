@@ -4,8 +4,8 @@ import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTranslations } from '../redux/slices/languageSlice';
-import { fetchItems } from '../redux/slices/productsSlice';
-import { setActiveCategory, setCurrentPage, setFilterParams } from '../redux/slices/filterSlice';
+import { fetchItems, selectProducts } from '../redux/slices/productsSlice';
+import { selectFilter, setActiveCategory, setCurrentPage, setFilterParams } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -24,8 +24,8 @@ const Home = () => {
     const querySearch = useRef(false);
     const pageMounted = useRef(false);
 
-    const { activeCategory, activeSort, currentPage, itemsPerPage, searchValue } = useSelector(state => state.filter);
-    const { items, itemsCount, status } = useSelector(state => state.products);
+    const { activeCategory, activeSort, currentPage, itemsPerPage, searchValue } = useSelector(selectFilter);
+    const { items, itemsCount, status } = useSelector(selectProducts);
 
     // If there was a first render, and parameters have been changed
     useEffect(() => {

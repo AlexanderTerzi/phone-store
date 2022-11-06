@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveSort } from '../redux/slices/filterSlice';
-import { selectTranslations } from '../redux/slices/languageSlice';
+
+import { selectFilter, setActiveSort } from '../redux/slices/filterSlice';
+import { selectLanguages, selectTranslations } from '../redux/slices/languageSlice';
 
 const Sort = () => {
     const dispatch = useDispatch();
     const t = useSelector(selectTranslations);
-    const activeSort = useSelector(state => state.filter.activeSort);
-    const currentLanguageCode = useSelector(state => state.language.lang);
+
+    const { activeSort } = useSelector(selectFilter);
+    const { lang } = useSelector(selectLanguages);
 
     const [openSort, setOpenSort] = useState(false);
     const sortRef = useRef();
@@ -32,7 +34,7 @@ const Sort = () => {
     useEffect(() => {
         const sortTitle = t.sortList[0].name;
         dispatch(setActiveSort({ name: sortTitle, sortProperty: '-rating' }))
-    }, [currentLanguageCode]);
+    }, [lang]);
 
     const handleClickSort = (index) => {
         dispatch(setActiveSort(index));

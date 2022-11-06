@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { GrLanguage } from "react-icons/gr";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setLang } from '../redux/slices/languageSlice';
+import { selectLanguages, setLang } from '../redux/slices/languageSlice';
 
 const Languages = () => {
     const dispatch = useDispatch();
@@ -24,9 +24,9 @@ const Languages = () => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
-    const supportedLangs = useSelector((state) => state.language.supportedLangs);
+    const { supportedLangs } = useSelector(selectLanguages);
 
-    const currentLang = useSelector((state) => state.language.lang);
+    const { lang } = useSelector(selectLanguages);
 
     return (
         <div
@@ -37,14 +37,14 @@ const Languages = () => {
         >
             <GrLanguage className="languages__icon" />
             <span className="languages__value">
-                {currentLang}
+                {lang}
             </span>
             <ul className={openLanguage ? `languages__popup active` : "languages__popup"}>
 
                 {Object.entries(supportedLangs).map(([code, name]) => (
                     <li
                         key={code}
-                        className={currentLang === code ? 'active' : ''}
+                        className={lang === code ? 'active' : ''}
                         onClick={() => dispatch(setLang(code))}
 
                     >

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectTranslations } from '../redux/slices/languageSlice';
-import { clearItems, getCartSelector } from '../redux/slices/cartSlice';
+import { clearItems, selectCart } from '../redux/slices/cartSlice';
 
 import { BsCart4 } from "react-icons/bs";
 
@@ -15,7 +15,7 @@ const Cart = () => {
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
 
-    const { totalPrice, totalCount, items } = useSelector(getCartSelector);
+    const { totalPrice, totalCount, items } = useSelector(selectCart);
 
     const handleClickClear = () => {
         if (window.confirm(t.clearCartConfirm)) {

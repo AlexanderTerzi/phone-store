@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { useSelector, useDispatch } from "react-redux";
-import { addItem } from '../redux/slices/cartSlice';
+import { addItem, selectCart } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
 import { BsCart4 } from "react-icons/bs";
@@ -17,7 +17,7 @@ const SingleProduct = () => {
 
     const [singleItem, setSingleItem] = useState();
 
-    const itemCount = useSelector(state => state.cart.items.filter(obj => obj.id === id));
+    const itemCount = useSelector(selectCart).items.filter(obj => obj.id === id);
 
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);

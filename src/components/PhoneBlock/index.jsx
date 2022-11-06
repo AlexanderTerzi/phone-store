@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectTranslations } from '../../redux/slices/languageSlice';
-import { addItem } from '../../redux/slices/cartSlice';
+import { addItem, selectCart } from '../../redux/slices/cartSlice';
 
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
 
-    const itemCount = useSelector(state => state.cart.items.filter(obj => obj.id === id));
+    const itemCount = useSelector(selectCart).items.filter(obj => obj.id === id);
 
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);

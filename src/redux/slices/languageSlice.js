@@ -27,5 +27,6 @@ export const languageSlice = createSlice({
 
 export const { setLang } = languageSlice.actions;
 
+export const selectLanguages = (state) => state.language;
 export const selectTranslations = (state) => state.language.translations[state.language.lang];
 export default languageSlice.reducer;
