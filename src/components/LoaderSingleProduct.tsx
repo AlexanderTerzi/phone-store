@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const LoaderSingleProduct = () => {
+const LoaderSingleProduct: React.FC = () => {
     return (
         <ContentLoader
             speed={2}

@@ -3,10 +3,15 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { selectTranslations } from '../redux/slices/languageSlice';
 
-const Categories = ({ activeCategory, setActiveCategory }) => {
+interface ICategoriesProps {
+    activeCategory: number;
+    setActiveCategory: (index: number) => void;
+}
+
+const Categories: React.FC<ICategoriesProps> = ({ activeCategory, setActiveCategory }) => {
     const t = useSelector(selectTranslations);
 
-    const categories = t.categories;
+    const categories: string[] = t.categories;
 
     return (
         <div className="categories">

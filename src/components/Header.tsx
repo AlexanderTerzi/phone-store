@@ -8,7 +8,7 @@ import logo from '../assets/img/logo.png'
 import { BsCart4 } from "react-icons/bs";
 import Languages from './Languages';
 
-const Header = () => {
+const Header: React.FC = () => {
     const { totalPrice, totalCount } = useSelector(selectCart);
 
     return (

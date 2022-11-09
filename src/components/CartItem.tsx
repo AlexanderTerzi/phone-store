@@ -4,7 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addItem, removeItem, minusItem } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
-const CartItem = ({ id, title, currentPrice, count, imageUrl, alt, color, memory }) => {
+interface ICartItemProps {
+    id: number | string;
+    title: string;
+    currentPrice: number;
+    count: number;
+    imageUrl: string;
+    alt: string;
+    color: string;
+    memory: number;
+}
+
+const CartItem: React.FC<ICartItemProps> = ({ id, title, currentPrice, count, imageUrl, alt, color, memory }) => {
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
 
@@ -12,7 +23,7 @@ const CartItem = ({ id, title, currentPrice, count, imageUrl, alt, color, memory
         id,
         color,
         memory
-    }
+    };
 
     const handleClickPlus = () => {
         dispatch(addItem(item));

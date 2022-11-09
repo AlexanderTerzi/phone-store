@@ -6,18 +6,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { addItem, selectCart } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
-import { BsCart4 } from "react-icons/bs";
 import LoaderSingleProduct from '../components/LoaderSingleProduct';
+import { BsCart4 } from "react-icons/bs";
 
-const SingleProduct = () => {
+interface ISingleProduct {
+    id: number;
+    imageUrl: string;
+    alt: string;
+    title: string;
+    colors: string[];
+    currentPrice: number;
+    description: string;
+    memory: { capacity: number, price: number }[];
+}
+
+const SingleProduct: React.FC = () => {
     const { id } = useParams();
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [singleItem, setSingleItem] = useState();
+    const [singleItem, setSingleItem] = useState<ISingleProduct>();
 
-    const itemCount = useSelector(selectCart).items.filter(obj => obj.id === id);
+    const itemCount = useSelector(selectCart).items.filter((obj: { id: string | number }) => obj.id === id);
 
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);
@@ -34,30 +45,35 @@ const SingleProduct = () => {
         })();
     }, [])
 
-    const handleClickColor = (item) => {
-        setActiveColor(singleItem.colors.indexOf(item));
+    const handleClickColor = (item: string) => {
+        if (singleItem) {
+            setActiveColor(singleItem.colors.indexOf(item));
+        }
     };
 
-    const handleClickMemory = (item) => {
-        setActiveMemory(singleItem.memory.indexOf(item));
+    const handleClickMemory = (item: { capacity: number; price: number; }) => {
+        if (singleItem) {
+            setActiveMemory(singleItem.memory.indexOf(item));
+        }
     };
 
     const handleClickAdd = () => {
-        const item = {
-            id: singleItem.id,
-            title: singleItem.title,
-            imageUrl: singleItem.imageUrl,
-            alt: singleItem.alt,
-            currentPrice,
-            color: singleItem.colors[activeColor],
-            memory: singleItem.memory[activeMemory].capacity
+        if (singleItem) {
+            const item = {
+                id: singleItem.id,
+                title: singleItem.title,
+                imageUrl: singleItem.imageUrl,
+                alt: singleItem.alt,
+                currentPrice,
+                color: singleItem.colors[activeColor],
+                memory: singleItem.memory[activeMemory].capacity
+            }
+            dispatch(addItem(item));
         }
-
-        dispatch(addItem(item));
     }
 
     const currentPrice = singleItem ? singleItem.memory[activeMemory].price : 0;
-    const count = itemCount ? itemCount.reduce((sum, obj) => obj.count + sum, 0) : null;
+    const count = itemCount ? itemCount.reduce((sum: number, obj: { count: number }) => obj.count + sum, 0) : null;
 
     if (!singleItem) {
         return <LoaderSingleProduct />

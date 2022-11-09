@@ -5,7 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectFilter, setActiveSort } from '../redux/slices/filterSlice';
 import { selectLanguages, selectTranslations } from '../redux/slices/languageSlice';
 
-const Sort = () => {
+interface ISortList {
+    name: string;
+    sortProperty: string;
+}
+
+const Sort: React.FC = () => {
     const dispatch = useDispatch();
     const t = useSelector(selectTranslations);
 
@@ -13,14 +18,18 @@ const Sort = () => {
     const { lang } = useSelector(selectLanguages);
 
     const [openSort, setOpenSort] = useState(false);
-    const sortRef = useRef();
+    const sortRef = useRef<HTMLDivElement>(null);
 
     const handleOpenSort = () => {
         setOpenSort(!openSort);
     };
 
-    const handleOutsideClick = (e) => {
-        if (!e.path.includes(sortRef.current)) {
+    const handleOutsideClick = (e: MouseEvent) => {
+        const _e = e as MouseEvent & {
+            path: Node[];
+        };
+
+        if (sortRef.current && !_e.path.includes(sortRef.current)) {
             setOpenSort(false);
         };
     };
@@ -36,12 +45,12 @@ const Sort = () => {
         dispatch(setActiveSort({ name: sortTitle, sortProperty: '-rating' }))
     }, [lang]);
 
-    const handleClickSort = (index) => {
-        dispatch(setActiveSort(index));
+    const handleClickSort = (obj: ISortList) => {
+        dispatch(setActiveSort(obj));
         setOpenSort(false);
     }
 
-    const sortList = t.sortList;
+    const sortList: ISortList[] = t.sortList;
 
     return (
         <div className="sort" ref={sortRef}>

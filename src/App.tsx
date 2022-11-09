@@ -16,7 +16,6 @@ function App() {
           {
             routes.map((item) => (
               <Route
-                exact
                 key={item.path}
                 path={item.path}
                 element={item.element} />

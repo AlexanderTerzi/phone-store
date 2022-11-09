@@ -8,14 +8,18 @@ import { selectLanguages, setLang } from '../redux/slices/languageSlice';
 const Languages = () => {
     const dispatch = useDispatch();
     const [openLanguage, setOpenLanguage] = useState(false);
-    const languageRef = useRef();
+    const languageRef = useRef<HTMLDivElement>(null);
 
     const handleOpenLanguage = () => {
         setOpenLanguage(!openLanguage);
     };
 
-    const handleOutsideClick = (e) => {
-        if (!e.path.includes(languageRef.current)) {
+    const handleOutsideClick = (e: MouseEvent) => {
+        const _e = e as MouseEvent & {
+            path: Node[];
+        };
+
+        if (languageRef.current && !_e.path.includes(languageRef.current)) {
             setOpenLanguage(false);
         };
     };
@@ -25,7 +29,6 @@ const Languages = () => {
     }, []);
 
     const { supportedLangs } = useSelector(selectLanguages);
-
     const { lang } = useSelector(selectLanguages);
 
     return (
@@ -41,7 +44,7 @@ const Languages = () => {
             </span>
             <ul className={openLanguage ? `languages__popup active` : "languages__popup"}>
 
-                {Object.entries(supportedLangs).map(([code, name]) => (
+                {Object.entries<string>(supportedLangs).map(([code, name]) => (
                     <li
                         key={code}
                         className={lang === code ? 'active' : ''}

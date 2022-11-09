@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { useSelector } from "react-redux";
-
-
-import errorImg from '../assets/img/error.png';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
-const ErrorBlock = () => {
+import errorImg from '../assets/img/error.png';
+
+const ErrorBlock: React.FC = () => {
     const t = useSelector(selectTranslations);
 
     const refreshPage = () => {

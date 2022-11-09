@@ -8,7 +8,7 @@ import AnimatedPage from './AnimatedPage';
 import notFoundImg from '../assets/img/not-found.png';
 
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
     const t = useSelector(selectTranslations);
 
     return (

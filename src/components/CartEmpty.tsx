@@ -6,7 +6,7 @@ import { selectTranslations } from '../redux/slices/languageSlice';
 
 import cartEmptyImg from '../assets/img/empty-cart.png';
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
     const t = useSelector(selectTranslations);
 
     return (

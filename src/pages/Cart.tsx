@@ -11,7 +11,7 @@ import CartItem from '../components/CartItem';
 import CartEmpty from '../components/CartEmpty';
 import AnimatedPage from './AnimatedPage';
 
-const Cart = () => {
+const Cart: React.FC = () => {
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
 
@@ -57,7 +57,7 @@ const Cart = () => {
                     </div>
                     <div className="content__items">
                         {
-                            items.map((obj) => (
+                            items.map((obj: any) => (
                                 <CartItem
                                     key={`${obj.id}_${obj.memory}_${obj.color}`}
                                     {...obj}

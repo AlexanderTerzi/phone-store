@@ -7,21 +7,33 @@ import { addItem, selectCart } from '../../redux/slices/cartSlice';
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
-const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
+interface IPhoneBlockProps {
+    id: number | string;
+    title: string;
+    imageUrl: string;
+    alt: string;
+    colors: string[];
+    memory: {
+        capacity: number;
+        price: number;
+    }[];
+}
+
+const PhoneBlock: React.FC<IPhoneBlockProps> = ({ id, title, imageUrl, alt, colors, memory }) => {
     const t = useSelector(selectTranslations);
     const dispatch = useDispatch();
 
-    const itemCount = useSelector(selectCart).items.filter(obj => obj.id === id);
+    const itemCount = useSelector(selectCart).items.filter((obj: { id: string | number }) => obj.id === id);
 
     const [activeColor, setActiveColor] = useState(0);
     const [activeMemory, setActiveMemory] = useState(0);
 
-    const handleClickColor = (item) => {
+    const handleClickColor = (item: string) => {
         setActiveColor(colors.indexOf(item));
     };
 
-    const handleClickMemory = (item) => {
-        setActiveMemory(memory.indexOf(item));
+    const handleClickMemory = (obj: { capacity: number; price: number; }) => {
+        setActiveMemory(memory.indexOf(obj));
     };
 
     const handleClickAdd = () => {
@@ -39,7 +51,7 @@ const PhoneBlock = ({ id, title, imageUrl, alt, colors, memory }) => {
     }
 
     const currentPrice = memory[activeMemory].price;
-    const count = itemCount ? itemCount.reduce((sum, obj) => obj.count + sum, 0) : null;
+    const count = itemCount ? itemCount.reduce((sum: number, obj: any) => obj.count + sum, 0) : null;
 
     return (
         <div className="phone-block">

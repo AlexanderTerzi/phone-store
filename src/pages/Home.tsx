@@ -16,7 +16,7 @@ import Pagination from '../components/Pagination';
 import ErrorBlock from '../components/ErrorBlock';
 import AnimatedPage from './AnimatedPage';
 
-const Home = () => {
+const Home: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -48,7 +48,7 @@ const Home = () => {
         if (location.search) {
             const filterParams = qs.parse(location.search.substring(1));
 
-            const activeSort = t.sortList.find(obj => obj.sortProperty === filterParams.sortProperty);
+            const activeSort = t.sortList.find((obj: any) => obj.sortProperty === filterParams.sortProperty);
 
             dispatch(setFilterParams({
                 ...filterParams,
@@ -71,6 +71,7 @@ const Home = () => {
                 const search = searchValue ? `search=${searchValue}` : '';
                 const pagination = activeCategory === 0 ? `page=${currentPage}&limit=${itemsPerPage}` : `page=${1}&limit=${itemsPerPage}`;
 
+                // @ts-ignore
                 dispatch(fetchItems({
                     fetchURL,
                     category,
@@ -86,23 +87,23 @@ const Home = () => {
 
     }, [activeCategory, activeSort, searchValue, currentPage]);
 
-    const handleClickCategory = (index) => {
+    const handleClickCategory = (index: number) => {
         dispatch(setActiveCategory(index));
     };
 
-    const onChangePage = (num) => {
-        dispatch(setCurrentPage(num));
+    const onChangePage = (page: number) => {
+        dispatch(setCurrentPage(page));
     };
 
     const skeletons = [...new Array(8)].map((_, index) => <Loader key={index} />)
-    const goods = items.map((obj) => <PhoneBlock key={obj.id} {...obj} />)
+    const goods = items.map((obj: any) => <PhoneBlock key={obj.id} {...obj} />)
 
     return (
         <AnimatedPage>
             <div className="container">
                 <div className="content__top">
                     <Categories activeCategory={activeCategory} setActiveCategory={handleClickCategory} />
-                    <Search searchValue={searchValue} />
+                    <Search />
                 </div>
                 {
                     status === 'error'
