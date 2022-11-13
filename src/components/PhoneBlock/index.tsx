@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectTranslations } from '../../redux/slices/languageSlice';
-import { addItem, selectCart } from '../../redux/slices/cartSlice';
+import { addItem, CartItemType, selectCart } from '../../redux/slices/cartSlice';
 
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
@@ -37,14 +37,15 @@ const PhoneBlock: React.FC<IPhoneBlockProps> = ({ id, title, imageUrl, alt, colo
     };
 
     const handleClickAdd = () => {
-        const item = {
+        const item: CartItemType = {
             id,
             title,
             imageUrl,
             alt,
             currentPrice,
             color: colors[activeColor],
-            memory: memory[activeMemory].capacity
+            memory: memory[activeMemory].capacity,
+            count: 0
         }
 
         dispatch(addItem(item));
@@ -102,7 +103,7 @@ const PhoneBlock: React.FC<IPhoneBlockProps> = ({ id, title, imageUrl, alt, colo
                         {t.addButton}
                     </span>
                     {
-                        count > 0 && <i>{count}</i>
+                        count ? count > 0 && <i>{count}</i> : null
                     }
                 </div>
             </div>

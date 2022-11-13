@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store';
 import { selectTranslations } from '../redux/slices/languageSlice';
-import { fetchItems, selectProducts } from '../redux/slices/productsSlice';
-import { selectFilter, setActiveCategory, setCurrentPage, setFilterParams } from '../redux/slices/filterSlice';
+import { fetchItems, selectProducts, Status } from '../redux/slices/productsSlice';
+import { selectFilter, setActiveCategory, setCurrentPage, setFilterParams, SortType } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -17,7 +18,7 @@ import ErrorBlock from '../components/ErrorBlock';
 import AnimatedPage from './AnimatedPage';
 
 const Home: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const location = useLocation();
     const t = useSelector(selectTranslations);
@@ -48,11 +49,12 @@ const Home: React.FC = () => {
         if (location.search) {
             const filterParams = qs.parse(location.search.substring(1));
 
-            const activeSort = t.sortList.find((obj: any) => obj.sortProperty === filterParams.sortProperty);
+            const activeSort: SortType = t.sortList.find((obj: { sortProperty: string }) => obj.sortProperty === filterParams.sortProperty);
 
+            //@ts-ignore
             dispatch(setFilterParams({
                 ...filterParams,
-                activeSort
+                activeSort,
             }));
 
             querySearch.current = true;
@@ -71,7 +73,7 @@ const Home: React.FC = () => {
                 const search = searchValue ? `search=${searchValue}` : '';
                 const pagination = activeCategory === 0 ? `page=${currentPage}&limit=${itemsPerPage}` : `page=${1}&limit=${itemsPerPage}`;
 
-                // @ts-ignore
+
                 dispatch(fetchItems({
                     fetchURL,
                     category,
@@ -106,7 +108,7 @@ const Home: React.FC = () => {
                     <Search />
                 </div>
                 {
-                    status === 'error'
+                    status === Status.ERROR
                         ? <ErrorBlock />
                         : <>
                             <h2 className="content__title">
@@ -116,7 +118,7 @@ const Home: React.FC = () => {
                             </h2>
                             <Sort />
                             <div className="content__items">
-                                {status === 'loading' ? skeletons : goods}
+                                {status === Status.LOADING ? skeletons : goods}
                             </div>
                             <Pagination
                                 onChangePage={onChangePage}

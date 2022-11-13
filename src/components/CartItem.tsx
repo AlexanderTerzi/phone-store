@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { addItem, removeItem, minusItem } from '../redux/slices/cartSlice';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store';
+import { addItem, removeItem, minusItem, CartItemType } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
 interface ICartItemProps {
@@ -15,14 +16,25 @@ interface ICartItemProps {
     memory: number;
 }
 
+interface ISendCartItem {
+    id: number | string;
+    color: string;
+    memory: number;
+}
+
 const CartItem: React.FC<ICartItemProps> = ({ id, title, currentPrice, count, imageUrl, alt, color, memory }) => {
     const t = useSelector(selectTranslations);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const item = {
+    const item: CartItemType = {
         id,
         color,
-        memory
+        memory,
+        currentPrice,
+        count,
+        imageUrl,
+        title,
+        alt
     };
 
     const handleClickPlus = () => {

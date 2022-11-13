@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { useSelector, useDispatch } from "react-redux";
-import { addItem, selectCart } from '../redux/slices/cartSlice';
+import { useSelector } from "react-redux";
+import { useAppDispatch } from '../redux/store';
+import { addItem, CartItemType, selectCart } from '../redux/slices/cartSlice';
 import { selectTranslations } from '../redux/slices/languageSlice';
 
 import LoaderSingleProduct from '../components/LoaderSingleProduct';
@@ -20,10 +21,12 @@ interface ISingleProduct {
     memory: { capacity: number, price: number }[];
 }
 
+
+
 const SingleProduct: React.FC = () => {
     const { id } = useParams();
     const t = useSelector(selectTranslations);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const [singleItem, setSingleItem] = useState<ISingleProduct>();
@@ -59,14 +62,15 @@ const SingleProduct: React.FC = () => {
 
     const handleClickAdd = () => {
         if (singleItem) {
-            const item = {
+            const item: CartItemType = {
                 id: singleItem.id,
                 title: singleItem.title,
                 imageUrl: singleItem.imageUrl,
                 alt: singleItem.alt,
                 currentPrice,
                 color: singleItem.colors[activeColor],
-                memory: singleItem.memory[activeMemory].capacity
+                memory: singleItem.memory[activeMemory].capacity,
+                count: Number(itemCount)
             }
             dispatch(addItem(item));
         }
@@ -131,7 +135,7 @@ const SingleProduct: React.FC = () => {
                                 {t.addButton}
                             </span>
                             {
-                                count > 0 && <i>{count}</i>
+                                count ? count > 0 && <i>{count}</i> : null
                             }
                         </div>
                     </div>
