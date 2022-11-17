@@ -2,19 +2,17 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { selectFilter, setActiveSort } from '../redux/slices/filterSlice';
+import { setActiveSort, SortType } from '../redux/slices/filterSlice';
 import { selectLanguages, selectTranslations } from '../redux/slices/languageSlice';
 
-interface ISortList {
-    name: string;
-    sortProperty: string;
+type SortProps = {
+    activeSort: SortType;
 }
 
-const Sort: React.FC = () => {
+const Sort: React.FC<SortProps> = React.memo(({ activeSort }) => {
     const dispatch = useDispatch();
     const t = useSelector(selectTranslations);
 
-    const { activeSort } = useSelector(selectFilter);
     const { lang } = useSelector(selectLanguages);
 
     const [openSort, setOpenSort] = useState(false);
@@ -45,12 +43,12 @@ const Sort: React.FC = () => {
         dispatch(setActiveSort({ name: sortTitle, sortProperty: '-rating' }))
     }, [lang]);
 
-    const handleClickSort = (obj: ISortList) => {
+    const handleClickSort = (obj: SortType) => {
         dispatch(setActiveSort(obj));
         setOpenSort(false);
     }
 
-    const sortList: ISortList[] = t.sortList;
+    const sortList: SortType[] = t.sortList;
 
     return (
         <div className="sort" ref={sortRef}>
@@ -87,6 +85,6 @@ const Sort: React.FC = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Sort;

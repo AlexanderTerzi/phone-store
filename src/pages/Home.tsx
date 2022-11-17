@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import qs from 'qs';
 
@@ -89,9 +89,9 @@ const Home: React.FC = () => {
 
     }, [activeCategory, activeSort, searchValue, currentPage]);
 
-    const handleClickCategory = (index: number) => {
+    const handleClickCategory = useCallback((index: number) => {
         dispatch(setActiveCategory(index));
-    };
+    }, []);
 
     const onChangePage = (page: number) => {
         dispatch(setCurrentPage(page));
@@ -116,7 +116,7 @@ const Home: React.FC = () => {
                                     searchValue ? `${t.searchTitle}: ${searchValue}...` : `${t.title}`
                                 }
                             </h2>
-                            <Sort />
+                            <Sort activeSort={activeSort} />
                             <div className="content__items">
                                 {status === Status.LOADING ? skeletons : goods}
                             </div>

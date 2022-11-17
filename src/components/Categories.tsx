@@ -8,7 +8,7 @@ interface ICategoriesProps {
     setActiveCategory: (index: number) => void;
 }
 
-const Categories: React.FC<ICategoriesProps> = ({ activeCategory, setActiveCategory }) => {
+const Categories: React.FC<ICategoriesProps> = React.memo(({ activeCategory, setActiveCategory }) => {
     const t = useSelector(selectTranslations);
 
     const categories: string[] = t.categories;
@@ -27,6 +27,6 @@ const Categories: React.FC<ICategoriesProps> = ({ activeCategory, setActiveCateg
             </ul>
         </div>
     );
-};
+});
 
 export default Categories;
