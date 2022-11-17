@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { defaultLang, supportedLangs } from "../../translation/i18nConfig";
 import { enTranslation } from "../../translation/locales/en/translation";
-import { ruTranslation } from "../../translation/locales/ru/translation";
+import { geTranslation } from "../../translation/locales/ge/translation";
 import { uaTranslation } from "../../translation/locales/ua/translation";
+import { frTranslation } from "../../translation/locales/fr/translation";
 
 interface ILanguageSliceState {
     lang: string;
@@ -18,7 +19,8 @@ const initialState: ILanguageSliceState = {
     translations: {
         ua: uaTranslation,
         en: enTranslation,
-        ru: ruTranslation,
+        ge: geTranslation,
+        fr: frTranslation,
     },
 };
 

@@ -5,5 +5,6 @@ export const defaultLang = cookies.get('i18next') || 'ua';
 export const supportedLangs = {
     ua: "Українська",
     en: "English",
-    ru: "Русский",
+    ge: "Deutsch",
+    fr: "Français",
 };
