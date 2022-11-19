@@ -7,8 +7,13 @@ import { selectLanguages, setLang } from '../redux/slices/languageSlice';
 
 const Languages = () => {
     const dispatch = useDispatch();
+
+    const { supportedLangs } = useSelector(selectLanguages);
+    const { lang } = useSelector(selectLanguages);
+
     const [openLanguage, setOpenLanguage] = useState(false);
     const languageRef = useRef<HTMLDivElement>(null);
+    const isMounted = useRef<boolean>(false);
 
     const handleOpenLanguage = () => {
         setOpenLanguage(!openLanguage);
@@ -28,8 +33,13 @@ const Languages = () => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
-    const { supportedLangs } = useSelector(selectLanguages);
-    const { lang } = useSelector(selectLanguages);
+    useEffect(() => {
+        if (isMounted.current) {
+            localStorage.setItem('language', lang);
+        }
+
+        isMounted.current = true;
+    }, [lang])
 
     return (
         <div

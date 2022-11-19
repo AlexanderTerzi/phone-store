@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -9,7 +9,19 @@ import { BsCart4 } from "react-icons/bs";
 import Languages from './Languages';
 
 const Header: React.FC = () => {
-    const { totalPrice, totalCount } = useSelector(selectCart);
+    const { items, totalPrice, totalCount } = useSelector(selectCart);
+
+    const isMounted = useRef<boolean>(false);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const jsonCart = JSON.stringify(items);
+
+            localStorage.setItem('cart', jsonCart);
+        }
+
+        isMounted.current = true;
+    }, [items])
 
     return (
         <div className="header">
