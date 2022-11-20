@@ -1,4 +1,4 @@
-export const geTranslation = {
+export const deTranslation = {
     "title": "Alle Smartphones",
     "categories": [
         "Alle",

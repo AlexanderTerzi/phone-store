@@ -3,7 +3,7 @@ import { RootState } from './../store';
 import { createSlice } from "@reduxjs/toolkit";
 
 import { enTranslation } from "../../translation/locales/en/translation";
-import { geTranslation } from "../../translation/locales/ge/translation";
+import { deTranslation } from '../../translation/locales/de/translation';
 import { uaTranslation } from "../../translation/locales/ua/translation";
 import { frTranslation } from "../../translation/locales/fr/translation";
 
@@ -12,7 +12,7 @@ interface ILanguageSliceState {
     supportedLangs: {
         ua: string;
         en: string;
-        ge: string;
+        de: string;
         fr: string;
     };
     translations: any;
@@ -23,13 +23,13 @@ const initialState: ILanguageSliceState = {
     supportedLangs: {
         ua: "Українська",
         en: "English",
-        ge: "Deutsch",
+        de: "Deutsch",
         fr: "Français",
     },
     translations: {
         ua: uaTranslation,
         en: enTranslation,
-        ge: geTranslation,
+        de: deTranslation,
         fr: frTranslation,
     },
 };
