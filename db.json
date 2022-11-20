@@ -1,0 +1,398 @@
+[
+    {
+        "id": 0,
+        "imageUrl": "./products/iphone14.jpg",
+        "title": "Apple iPhone 14",
+        "alt": "Apple iPhone 14",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 1,
+        "rating": 4
+    },
+    {
+        "id": 1,
+        "imageUrl": "./products/iphone13pro.jpg",
+        "title": "Apple iPhone 13 Pro",
+        "alt": "Apple iPhone 13 Pro",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 1,
+        "rating": 3
+    },
+    {
+        "id": 2,
+        "imageUrl": "./products/iphone14pro.jpg",
+        "title": "Apple iPhone 14 Pro",
+        "alt": "Apple iPhone 14 Pro",
+        "colors": [
+            "black"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 1,
+        "rating": 1
+    },
+    {
+        "id": 3,
+        "imageUrl": "./products/samsungs22.jpg",
+        "title": "Samsung Galaxy S22",
+        "alt": "Samsung Galaxy S22",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 15000
+            },
+            {
+                "capacity": 128,
+                "price": 16000
+            },
+            {
+                "capacity": 256,
+                "price": 17000
+            }
+        ],
+        "initialPrice": 15000,
+        "category": 2,
+        "rating": 4
+    },
+    {
+        "id": 4,
+        "imageUrl": "./products/samsunga53.jpg",
+        "title": "Samsung Galaxy A53",
+        "alt": "Samsung Galaxy A53",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 17000
+            },
+            {
+                "capacity": 128,
+                "price": 18000
+            },
+            {
+                "capacity": 256,
+                "price": 19000
+            }
+        ],
+        "initialPrice": 17000,
+        "category": 2,
+        "rating": 2
+    },
+    {
+        "id": 5,
+        "imageUrl": "./products/samsungfold4.jpg",
+        "title": "Samsung Galaxy Fold 4",
+        "alt": "Samsung Galaxy Fold 4",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 2,
+        "rating": 4
+    },
+    {
+        "id": 6,
+        "imageUrl": "./products/huawei9novase.jpg",
+        "title": "Huawei Nova 9 SE",
+        "alt": "Huawei Nova 9 SE",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 3,
+        "rating": 3
+    },
+    {
+        "id": 7,
+        "imageUrl": "./products/huaweip30lite.jpg",
+        "title": "Huawei P30 Lite",
+        "alt": "Huawei P30 Lite",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 3,
+        "rating": 4
+    },
+    {
+        "id": 8,
+        "imageUrl": "./products/motorolag32.jpg",
+        "title": "Motorola G32",
+        "alt": "Motorola G32",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 4,
+        "rating": 2
+    },
+    {
+        "id": 9,
+        "imageUrl": "./products/motorolag200.jpg",
+        "title": "Motorola G200 5G",
+        "alt": "Motorola G200 5G",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 4,
+        "rating": 4
+    },
+    {
+        "id": 10,
+        "imageUrl": "./products/motorolag60.jpg",
+        "title": "Motorola Moto G60",
+        "alt": "Motorola Moto G60",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 4,
+        "rating": 4
+    },
+    {
+        "id": 11,
+        "imageUrl": "./products/redminote11.jpg",
+        "title": "Xiaomi Redmi Note 11",
+        "alt": "Xiaomi Redmi Note 11",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 5,
+        "rating": 4
+    },
+    {
+        "id": 12,
+        "imageUrl": "./products/redminote10.jpg",
+        "title": "Xiaomi Redmi Note 10",
+        "alt": "Xiaomi Redmi Note 10",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 5,
+        "rating": 4
+    },
+    {
+        "id": 13,
+        "imageUrl": "./products/redminote10pro.jpg",
+        "title": "Xiaomi Redmi Note 10 Pro",
+        "alt": "Xiaomi Redmi Note 10 Pro",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 5,
+        "rating": 4
+    },
+    {
+        "id": 14,
+        "imageUrl": "./products/samsungflip4.jpg",
+        "title": "Samsung Galaxy Flip 4",
+        "alt": "Samsung Galaxy Flip 4",
+        "colors": [
+            "black",
+            "white"
+        ],
+        "memory": [
+            {
+                "capacity": 64,
+                "price": 14000
+            },
+            {
+                "capacity": 128,
+                "price": 15000
+            },
+            {
+                "capacity": 256,
+                "price": 16000
+            }
+        ],
+        "initialPrice": 14000,
+        "category": 2,
+        "rating": 4
+    }
+]
