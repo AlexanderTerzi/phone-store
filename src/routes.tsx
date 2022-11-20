@@ -5,19 +5,19 @@ import SingleProduct from './pages/SingleProduct';
 
 export const routes = [
     {
-        path: process.env.PUBLIC_URL + "/",
+        path: `${process.env.PUBLIC_URL}/`,
         element: <Home />
     },
     {
-        path: process.env.PUBLIC_URL + "/cart",
+        path: `${process.env.PUBLIC_URL}/cart`,
         element: <Cart />
     },
     {
-        path: process.env.PUBLIC_URL + "/products/:id",
+        path: `${process.env.PUBLIC_URL}/products/:id`,
         element: <SingleProduct />
     },
     {
-        path: process.env.PUBLIC_URL + "*",
+        path: `${process.env.PUBLIC_URL}/*`,
         element: <NotFound />
     }
 ]

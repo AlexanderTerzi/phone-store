@@ -24,7 +24,7 @@ const CartEmpty: React.FC = () => {
                     {t.emptyCartTextTwo}
                 </p>
                 <img src={cartEmptyImg} alt="Empty cart" />
-                <Link to="/" className="button button--empty">
+                <Link to={`${process.env.PUBLIC_URL}/`} className="button button--empty">
                     <span>
                         {t.emptyCartButton}
                     </span>

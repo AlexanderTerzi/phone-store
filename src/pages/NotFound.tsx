@@ -21,7 +21,7 @@ const NotFound: React.FC = () => {
                     {t.page404Text}
                 </p>
                 <img src={notFoundImg} alt="404" />
-                <Link to="/" className="button button--not-found">
+                <Link to={`${process.env.PUBLIC_URL}/`} className="button button--not-found">
                     {t.back404}
                 </Link>
             </div>

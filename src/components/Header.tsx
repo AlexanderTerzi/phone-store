@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     return (
         <div className="header">
             <div className="container">
-                <Link to="/" className="header__logo">
+                <Link to={`${process.env.PUBLIC_URL}/`} className="header__logo">
                     <img src={logo} alt="Phone logo" />
                     <div>
                         <h1>Phone store</h1>
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
                 <div className="header__right">
                     <Languages />
                     <div className="header__cart">
-                        <Link to="/cart" className="button button--cart">
+                        <Link to={`${process.env.PUBLIC_URL}/cart`} className="button button--cart">
                             <span>
                                 {totalPrice} ₴
                             </span>

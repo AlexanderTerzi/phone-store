@@ -87,7 +87,7 @@ const SingleProduct: React.FC = () => {
         <div className="single-block">
             <h4 className="single-block__title">{singleItem.title}</h4>
             <div className="single-item">
-                <img className="single-item__image" src={`${process.env.PUBLIC_URL}.${singleItem.imageUrl}`} alt={singleItem.alt} />
+                <img className="single-item__image" src={`${process.env.PUBLIC_URL}/${singleItem.imageUrl}`} alt={singleItem.alt} />
                 <div className="single-item__description">
                     <p className="single-item__text">
                         {singleItem.description}
