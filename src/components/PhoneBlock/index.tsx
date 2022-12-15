@@ -57,7 +57,7 @@ const PhoneBlock: React.FC<IPhoneBlockProps> = ({ id, title, imageUrl, alt, colo
     return (
         <div className="phone-block">
             <Link to={`products/${id}`}>
-                <img className="phone-block__image" src={imageUrl} alt={alt} />
+                <img className="phone-block__image" src={`${process.env.PUBLIC_URL}/${imageUrl}`} alt={alt} />
                 <h4 className="phone-block__title">{title}</h4>
             </Link>
             <div className="phone-block__selector">
