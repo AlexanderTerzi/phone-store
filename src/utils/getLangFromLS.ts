@@ -1,5 +1,13 @@
 export const getLangFromLS = () => {
-    const language = localStorage.getItem('language') || 'ua';
+    const isLangInit = localStorage.getItem("languages");
 
-    return language;
+    if (!isLangInit) {
+        const currentLang = 'ua';
+
+        localStorage.setItem("languages", JSON.stringify(currentLang));
+        return currentLang;
+    } else {
+        const currentLang = JSON.parse(localStorage.getItem("languages")!);
+        return currentLang;
+    }
 }

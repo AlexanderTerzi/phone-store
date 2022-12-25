@@ -1,11 +1,12 @@
 import { getLangFromLS } from './../../utils/getLangFromLS';
 import { RootState } from './../store';
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { enTranslation } from "../../translation/locales/en/translation";
 import { deTranslation } from '../../translation/locales/de/translation';
 import { uaTranslation } from "../../translation/locales/ua/translation";
 import { frTranslation } from "../../translation/locales/fr/translation";
+import { setLanguage } from '../../utils/setLanguage';
 
 interface ILanguageSliceState {
     lang: string;
@@ -38,8 +39,9 @@ export const languageSlice = createSlice({
     name: "language",
     initialState,
     reducers: {
-        setLang(state, action) {
+        setLang(state, action: PayloadAction<string>) {
             state.lang = action.payload;
+            setLanguage(action.payload)
         },
     },
 });

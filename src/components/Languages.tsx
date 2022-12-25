@@ -33,14 +33,6 @@ const Languages = () => {
         document.body.addEventListener('click', handleOutsideClick);
     }, []);
 
-    useEffect(() => {
-        if (isMounted.current) {
-            localStorage.setItem('language', lang);
-        }
-
-        isMounted.current = true;
-    }, [lang])
-
     return (
         <div
             className="languages"
